@@ -8,7 +8,7 @@ This also has some handy utility stuff to generate self-signed certificates or a
 
 ## Building and Running
 
-1. Check out the repo. Then, clone it locally.
+1. Clone the repo.
 2. Update the openssl.cnf file that's in config/ssl/. This has some defaults you'll probably want to change in it. 
 3. (Optionally) update the runproxy.sh script. There are two variables up at the top of the file that can be adjusted if you don't want to use the default image (and container) name of nginxproxy and network name of httpproxy. 
 4. Build the image. Run "./runproxy.sh -b" and that should build the image and will also create a self-signed certificate for you if there's no cert (and will copy the resulting cert back for you). 
