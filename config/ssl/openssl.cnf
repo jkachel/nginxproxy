@@ -1,0 +1,34 @@
+# This is set up to work with alternative names (so your cert can work on multiple domains)
+# Adjust the values under [req_distinguished_name] appropriately
+# If you don't need alternative names, comment everything out under [alt_names] and
+# subjectAltName under [v3_req] - otherwise, you'll get an error
+# Be advised that some cert authorities (InCommon/Sectigo among them) won't accept not-real hostnames
+#  - so anything at .local won't work, and they may need to be domains they can certify ownership of
+
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_req
+req_extensions = v3_req 
+prompt = no
+
+[req_distinguished_name]
+# Country
+C = US
+# State/Province/etc.
+ST = TN
+# Locality (city, arrondisment, prefecture, etc. whatever makes sense)
+L = Memphis
+# Organization
+O = Internet Widgets
+# Organization Unit (your department, etc.)
+OU = Widgety Things
+# Common Name - this should be your main/only hostname
+CN = localhost
+
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = none.local
